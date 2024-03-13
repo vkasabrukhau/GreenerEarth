@@ -9,4 +9,5 @@ class extendedUserModel(models.Model):
     phoneNumber = models.CharField(max_length=30, default='0')
 
 class School(models.Model):
+    name = models.CharField(max_length=30, default='Blank School')
     people = models.ManyToManyField(extendedUserModel)
