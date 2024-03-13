@@ -1,0 +1,81 @@
+#primary_auth_content > h1{
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 35px;
+}
+
+#primary_auth_content{
+    font-family: "Roboto Mono";
+    font-weight:  "500";
+}
+
+form{
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+label{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+input{
+    border: 1px solid black!important;
+    border-radius: 10px;
+    padding: 10px 10px!important;
+    margin-bottom: 15px!important;
+}
+
+button{
+    width: 100%;
+    margin-top: 10px;
+}
+
+form > button{
+    display: flex!important;
+    justify-content: center;
+    align-items: center;
+}
+
+.button_icon{
+    width: 28px;
+    margin-right: 10px;
+    display: block;
+}
+
+.signup_auth_options{
+    display: flex!important;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    border: 1px solid black!important;
+    border-radius: 10px!important;
+    background-color: #fff!important;
+    color:#000!important;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+button:last-child{
+    background-color: #81B29A!important;
+    margin-bottom: 20px;
+}
+
+.submit-up{
+    transition: 0.8s;
+    border: 1px solid black!important;
+    border-radius: 10px!important;
+    background-color: #81B29A!important;
+    color:#000!important;
+}
+
+.submit-up:hover{
+    transition: 0.8s;
+    border-radius: 15px!important;
+}
+
+button:hover{
+    transition: 0.8s
+    background-over
+}
