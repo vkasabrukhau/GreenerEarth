@@ -9,7 +9,12 @@ def signup(request):
     context={
         'schools': schoolios,
     }
-    
+    return render(request, "signup.html", context)
+
+def signin(request):
+    return render(request, "signin.html")
+
+
 
 
 # Create your views here.

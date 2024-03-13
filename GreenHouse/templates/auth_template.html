@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Greener Earth</title>
-        <link rel="icon" type="image/x-icon" href="/images/GE_icon.svg">
+        <link rel="icon" type="image/x-icon" href="{% static 'images/GE_Icon.svg' %}">
         <link rel="stylesheet" href="{% static 'auth_template.css' %}">
         <link rel="stylesheet" href="{% static 'auth_signin.css' %}">
         <link rel="stylesheet" href="{% static 'auth_signup.css' %}">
@@ -22,11 +23,11 @@
         <div id="primary_auth_container">
             <a href=""></a>
             <a id="greener_earth_title" href="">
-                <img src="{% static 'assets/icons/GE_Icon' %}" alt="" id="GE_Icon">
+                <img src="{% static 'assets/icons/GE_Icon.svg' %}" alt="" id="GE_Icon">
                 <span>Greener Earth</span>
             </a>
             <div id="primary_auth_content">
-                {% blockbody %}
+                {% block body %}
 
                 {% endblock %}
             </div>
