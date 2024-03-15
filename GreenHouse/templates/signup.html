@@ -3,40 +3,48 @@
 {% block body %}
 <div class="container">
     <h1>Sign up</h1>
-    <form action="">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
         <div class="row">
             <div class="col">
                 <div class="mb-3">
                     <label for="firstnameinput" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="firstnameinput" class="signupinput" name="firstname">
+                    <input type="text" class="form-control-plaintext" id="firstnameinput" class="signupinput" name="firstname">
                 </div>
                 <div class="mb-3">
                     <label for="lastnameinput" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="lastnameinput" class="signupinput" name="lastname">
+                    <input type="text" class="form-control-plaintext" id="lastnameinput" class="signupinput" name="lastname">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">School E-Mail</label>
-                    <input type="text" class="form-control" id="email" class="signupinput" name="email">
+                    <input type="text" class="form-control-plaintext" id="email" class="signupinput" name="email">
                 </div>
             </div>
             <div class="col">
                 <div class="mb-3">
                     <label for="birthinput" class="form-label">Birthdate</label>
-                    <input type="date" class="form-control" id="birthinput" class="signupinput" name="birthdate">
+                    <input type="date" class="form-control-plaintext" id="birthinput" class="signupinput" name="birthdate">
                 </div>
                 <div class="mb-3">
                     <label for="phonenumber" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" id="phonenumber" class="signupinput" name="phonenumber">
+                    <input type="text" class="form-control-plaintext" id="phonenumber" class="signupinput" name="phonenumber">
                 </div>
                 <div class="mb-3" id="teacher_extension">
-                    <label for="schoolinput" class="form-label">School/Club</label>
-                    <select class="form-select form-select-lg mb-3" id="schoolinput" name="schoolinput"  class="signupinput" aria-label=".form-select-lg example" style="height: 45px;">
-                        <option selected>Select a school/club</option>                                    
+                    <label for="schoolinput" class="form-label">School</label>
+                    <select class="form-control-plaintext form-select-lg mb-3" id="schoolinput" name="schoolinput"  class="signupinput" aria-label=".form-select-lg example" style="height: 45px; border:1px solid black">
+                        <option selected>Select a school</option>
+                        {% for school in schools %}
+                            <option value="{{ school.name }}">{{ school.name }}</option>
+                        {% endfor %}                                
                     </select>
                 </div>
             </div>
         </div>
-        <button type="button" class="btn" style="background-color: #fff!important; border: 1px solid black; font-size: 20px;">Sign Up!</button>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control-plaintext" id="password" class="password" name="password">
+        </div>
+        <button type="submit" class="btn" style="background-color: #81B29A!important; border: 1px solid black; font-size: 20px; margin-bottom: 20px!important;">Sign Up!</button>
     </form>
 </div>
 {% endblock %}

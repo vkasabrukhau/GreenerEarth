@@ -2,17 +2,17 @@
 {% load static %}
 {% block body %}
 <h1>Sign in</h1>
-<form action="">
+<form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <label for="auth_email_input" class="input_label">Email</label>
-    <input type="text" class="form-control-plaintext" id="auth_email_input" placeholder="youremail@gmail.com">
+    <input type="text" class="form-control-plaintext" id="auth_email_input" placeholder="youremail@gmail.com" name="email">
     
     <label for="auth_pass_input" class="input_label">Password</label>
-    <input type="text" class="form-control-plaintext" id="auth_pass_input" placehold="password">
+    <input type="password" class="form-control-plaintext" id="auth_pass_input" placehold="password" name="password">
     
     <button type="submit" class="btn btn-primary mb-3 submit-up">Sign In</button>
     <button type="button" class="btn signup_auth_options"><img src="{% static 'assets/icons/Google_Icon.svg' %}" alt="" style="width: 25px;" class="button_icon">Sign In with Google</button>
     <button type="button" class="btn signup_auth_options"><img src="{% static 'assets/icons/Apple_icon.svg' %}" alt="" class="button_icon">Sign In with Apple</button>
-    <button type="button" class="btn signup_auth_options"> Sign Up</button>
+    <a type="button" class="btn signup_auth_options" href="signup" style="background-color: #81B29A!important; margin-bottom: 20px!important;"> Sign Up</a>
 </form>
 {% endblock %}

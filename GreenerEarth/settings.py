@@ -14,6 +14,8 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,7 +28,8 @@ SECRET_KEY = 'django-insecure-y2966o3p=t7-asdgo&%h2x#vwqpyk7v!h8*5lmyoo7nr9)%kv&
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/signin'
 
 # Application definition
 

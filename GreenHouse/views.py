@@ -5,6 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import extendedUserModel, School
+import datetime
+
+now = datetime.datetime.now()
 
 def signup(request):
     schoolios = School.objects.all()
@@ -17,10 +20,10 @@ def signup(request):
         birthday = request.POST['birthdate']
         cellNumber = request.POST['phonenumber']
         email = request.POST['email']
-        school = request.POST['school']
+        school = request.POST['schoolinput']
         password = request.POST['password']
         
-        if(User.objects.filter(email=email).exists):
+        if(User.objects.filter(email = email).exists()):
             messages.info("This e-mail is already taken")
             return render(request, "signup.html", context)
         else:
@@ -28,18 +31,35 @@ def signup(request):
             user.set_password(password)
             user.save()
 
-            extendedUser = extendedUserModel.objects.create(user=user, birthdate = birthday, schoolEmail = email, phoneNumber = cellNumber)
+            user.first_name = firstName
+            user.last_name = lastName
+            user.date_joined = now
+
+            user.save()
+            selected_school = School.objects.get(name=school)
+            extendedUser = extendedUserModel.objects.create(user=user, birthdate = birthday, schoolEmail = email, phoneNumber = cellNumber, school=selected_school)
             extendedUser.save()
 
-            selected_school = School.objects.get(name=school)
-            selected_school.people.add(extendedUser)
-
-
-
-    return render(request, "signup.html", context)
+            user_login = authenticate(username = email, password = password)
+            login(request, user_login)
+            return redirect('/')
+    else:
+        return render(request, "signup.html", context)
 
 def signin(request):
-    return render(request, "signin.html")
+    if(request.method == "POST"):
+        user_login = authenticate(username = request.POST["email"], password = request.POST["password"])
+        if user_login is not None:
+            login(request, user_login)
+            return redirect('/')
+        else:
+            return redirect('signin')
+    else:
+        return render(request, 'signin.html')
+
+@login_required
+def home(request):
+    return render(request, 'signin.html')
 
 
 # Create your views here.
