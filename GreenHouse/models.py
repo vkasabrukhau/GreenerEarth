@@ -5,18 +5,11 @@ from colorfield.fields import ColorField
 from django.core.validators import int_list_validator
 from datetime import date
 
-class School(models.Model):
-    name = models.CharField(max_length=30, default='Blank School')
-
-    def __str__(self):
-        return self.name
-
 class extendedUserModel(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     birthdate = models.DateField(("Date"), default=date.today)
     schoolEmail = models.CharField(max_length=30, default='personalMail')
     phoneNumber = models.CharField(max_length=30, default='0')
-    school = models.ForeignKey(School, null=True, on_delete=models.CASCADE)
     role = models.CharField(max_length=30, default="Student")
 
     def __str__(self):
@@ -60,6 +53,9 @@ class box(models.Model):
     temp_avg = models.IntegerField(default=80)
     humidity_avg = models.IntegerField(default=80)
 
-class school(models.Model):
+class School(models.Model):
+    name = models.CharField(max_length=30, default='Blank School')
     boxes = models.ManyToManyField(box)
 
+    def __str__(self):
+        return self.name
